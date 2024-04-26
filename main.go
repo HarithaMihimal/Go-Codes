@@ -1,11 +1,11 @@
 package main
 
-import "net/http"
+import (
 
+	"net/http"
+	"github.com/gowebexamples/http-server/api"
+)
 func main() {
-	http.HandleFunc("/hello-world", func(w http.ResponseWriter, r *http.Request) {
-w.Write([]byte("Hello World!"))
-	})
-	http.ListenAndServe(":8080", nil)
-
+	srv := api.NewServer()
+	http.ListenAndServe(":8080", srv)
 }
